@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>无记 · Books</title>
-    <meta name="description" content="书">
+    <meta name="description" content="无记的书架 · 读过的、写的、在写的。">
     <meta property="og:title" content="无记 · Books">
-    <meta property="og:description" content="书">
+    <meta property="og:description" content="无记的书架 · 读过的、写的、在写的。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jeekeagle.github.io/wuji-books">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23faf7f0'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-size='52' font-family='serif' fill='%231a1a1a'%3E书%3C/text%3E%3C/svg%3E">
@@ -25,7 +25,7 @@
                 <li><a href="https://jeekeagle.github.io/wuji/" target="_self">home</a></li>
                 <li><a href="https://jeekeagle.github.io/wuji-blog/" target="_blank" rel="noopener">随笔</a></li>
                 <li><a href="https://jeekeagle.github.io/zero-perspective-hub/" target="_blank" rel="noopener">视角</a></li>
-                <li class="active"><a href="https://jeekeagle.github.io/wuji-books/">Books</a></li>
+                <li class="active"><a href="./" aria-current="page">Books</a></li>
                             </ul>
         </nav>
     </header>
@@ -38,16 +38,22 @@
             <li class="book-card">
                 <a class="book-link" href="https://jeekeagle.github.io/mg-16-code/" target="_blank" rel="noopener">
                     <div class="book-cover"><img src="./covers/mg-16-code.png" alt="管理者的十六字心法"></div>
+                    <div class="book-meta">
+                        <p class="book-title">管理者的十六字心法</p>
+                        <p class="book-author">胡仕湘</p>
+                        <p class="book-date">2026 · 读</p>
+                    </div>
                 </a>
             </li>
         </ul>
     </main>
 
     <script>
+        // Empty-state fallback. Only renders when bookGrid has zero <li> children at load.
+        // If you add books below, this stays dormant; if you remove all, it shows "还没有书。"
         (function () {
             var grid = document.getElementById('bookGrid');
-            if (!grid) return;
-            if (grid.children.length > 0) return;
+            if (!grid || grid.children.length > 0) return;
             var empty = document.createElement('li');
             empty.className = 'book-empty';
             empty.textContent = '还没有书。';
